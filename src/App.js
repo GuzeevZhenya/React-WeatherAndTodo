@@ -1,24 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { BrowserRouter, Link, Route } from "react-router-dom";
+import {Todo} from './components/Todo/Todo'
+import {Weather} from './components/Weather/Weather'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <nav className="navigation">
+          <Link to="/todo">Todo</Link>
+          <Link to="/weather">Weather</Link>
+        </nav>
+        <Route path="/todo" exact component={() => <Todo />}></Route>
+        <Route path="/weather" exact component={() => <Weather />}></Route>
+      </div>
+    </BrowserRouter>
   );
 }
 
